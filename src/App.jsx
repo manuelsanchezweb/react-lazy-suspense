@@ -15,7 +15,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route path="/" element={<Nav />}>
+          <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
@@ -26,7 +26,7 @@ function App() {
   );
 }
 
-function Nav() {
+function Layout() {
   return (
     <>
       <nav>
