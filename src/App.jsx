@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Link,
@@ -6,9 +7,10 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
+
+const Home = lazy(() => import("./components/Home"));
+const About = lazy(() => import("./components/About"));
+const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function Layout() {
         <Link to="/contact">Contact</Link>
         <Link to="/about">About</Link>
       </nav>
-      <Outlet />
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
